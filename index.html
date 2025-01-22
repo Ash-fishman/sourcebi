@@ -47,7 +47,7 @@
 
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000)) / 1000);
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         document.getElementById('countdown').innerText = 
           `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
@@ -57,7 +57,8 @@
       update();
     }
 
-    const endTime = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours from now
+    // Set the countdown to 24 hours from now
+    const endTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 hours
     countdown(endTime);
   </script>
 </body>
